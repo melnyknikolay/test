@@ -76,7 +76,7 @@ public class RoleDaoImpl implements Dao<Role> {
 
 
    @Override
-    public List<Role> getEntityes() {
+    public List<Role> getEntyties() {
         Session session;
         try{
             session = sessionFactory.getCurrentSession();
