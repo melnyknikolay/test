@@ -73,7 +73,7 @@ public class UserDaoImpl implements Dao<User> {
 	}
 
 	@Override
-	public List<User> getEntityes() {
+	public List<User> getEntyties() {
 		Session session;
 		try{
 			session = sessionFactory.getCurrentSession();
