@@ -9,7 +9,7 @@ import java.util.List;
 @RestController
 @RequestMapping(UserRestController.REST_URL)
 public class UserRestController extends AbstractUserController {
-	public static final String REST_URL = "/rest/user";
+	public static final String REST_URL = "/rest/users";
 
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -32,7 +32,7 @@ public class UserRestController extends AbstractUserController {
 		super.update(userTo, id);
 	}
 
-	@RequestMapping(value = "/users", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<UserTo> getAll() {
 		return super.getAll();
 	}
