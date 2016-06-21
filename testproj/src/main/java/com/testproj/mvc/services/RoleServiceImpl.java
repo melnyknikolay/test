@@ -1,6 +1,5 @@
 package com.testproj.mvc.services;
 
-import com.testproj.mvc.dao.RoleDao;
 import com.testproj.mvc.model.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,34 +10,40 @@ import java.util.List;
  * Created by Николай on 17.06.2016.
  */
 @Service
-public class RoleServiceImpl implements RoleService {
+public class RoleServiceImpl implements Service<Role> {
 
     @Autowired
-    private RoleDao roleDao;
+    private Dao<Role> dao;
 
     @Override
     public void save(Role role) {
-        roleDao.save(role);
+        dao.save(role);
     }
 
     @Override
     public void delete(int id) {
-        roleDao.delete(id);
+        dao.delete(id);
     }
 
     @Override
     public void update(Role role) {
-        roleDao.save(role);
+        dao.save(role);
     }
 
     @Override
     public Role getById(int id) {
-        return roleDao.getById(id);
+        return dao.getById(id);
     }
 
     @Override
-    public List<Role> getRoles() {
-        return roleDao.getRoles();
+    public Role getByName(String name) {
+        return dao.getByName(name);
+    }
+
+
+    @Override
+    public List<Role> getEntyties() {
+        return dao.getEntyties();
     }
 
 }
