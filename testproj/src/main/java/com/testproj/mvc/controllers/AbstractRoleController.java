@@ -2,7 +2,7 @@ package com.testproj.mvc.controllers;
 
 
 import com.testproj.mvc.model.Role;
-import com.testproj.mvc.services.RoleService;
+import com.testproj.mvc.services.AbstractRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,7 +13,7 @@ import java.util.List;
 public abstract class AbstractRoleController {
 
 	@Autowired
-	private RoleService service;
+	private AbstractRoleService service;
 
 
 	public Role get(int id) {
@@ -33,7 +33,7 @@ public abstract class AbstractRoleController {
 	}
 
 	public List<Role> getAll(){
-		return service.getRoles();
+		return service.getEntyties();
 	}
 
 }

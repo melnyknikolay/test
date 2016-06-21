@@ -1,5 +1,6 @@
 package com.testproj.mvc.services;
 
+import com.testproj.mvc.dao.AbstractRoleDao;
 import com.testproj.mvc.model.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,10 +11,10 @@ import java.util.List;
  * Created by Николай on 17.06.2016.
  */
 @Service
-public class RoleServiceImpl implements Service<Role> {
+public class RoleServiceImpl extends AbstractRoleService {
 
     @Autowired
-    private Dao<Role> dao;
+    private AbstractRoleDao dao;
 
     @Override
     public void save(Role role) {

@@ -1,14 +1,13 @@
 package com.testproj.mvc.services;
 
 import com.testproj.mvc.LoggedUser;
-import com.testproj.mvc.dao.RoleDao;
-import com.testproj.mvc.dao.UserDao;
+import com.testproj.mvc.dao.AbstractRoleDao;
+import com.testproj.mvc.dao.AbstractUserDao;
 import com.testproj.mvc.model.Role;
 import com.testproj.mvc.model.User;
 import com.testproj.mvc.to.UserTo;
 import com.testproj.mvc.util.UserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -19,13 +18,13 @@ import java.util.List;
  * Created by DoctoRJurius on 16.06.16.
  */
 @Service("userService")
-public class UserServiceImpl implements UserService, UserDetailsService {
+public class UserServiceImpl extends AbstractUserService implements UserDetailsService {
 
 	@Autowired
-	private UserDao userDao;
+	private AbstractUserDao userDao;
 
 	@Autowired
-	private RoleDao roleDao;
+	private AbstractRoleDao roleDao;
 
 
 	@Override public void save(UserTo userTo) {
@@ -56,8 +55,13 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 	}
 
 	@Override
-	public List<UserTo> getUsers() {
-		return UserUtil.list(userDao.getUsers());
+	public UserTo getByName(String name) {
+		return UserUtil.fromUser(userDao.getByName(name));
+	}
+
+	@Override
+	public List<UserTo> getEntyties() {
+		return UserUtil.list(userDao.getEntyties());
 	}
 
 	@Override
@@ -68,7 +72,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 	}
 
 	private int checkRoleName(String name){
-		List<Role> roles = roleDao.getRoles();
+		List<Role> roles = roleDao.getEntyties();
 		for (Role role: roles){
 			if (role.getName().equalsIgnoreCase(name))
 				return role.getId();

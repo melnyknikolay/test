@@ -14,7 +14,7 @@ import java.util.List;
  * Created by DoctoRJurius on 16.06.16.
  */
 @Repository
-public class UserDaoImpl implements Dao<User> {
+public class UserDaoImpl extends AbstractUserDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;

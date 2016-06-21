@@ -13,7 +13,7 @@ import java.util.List;
  * Created by Николай on 17.06.2016.
  */
 @Repository
-public class RoleDaoImpl implements Dao<Role> {
+public class RoleDaoImpl extends AbstractRoleDao {
 
     @Autowired
     private SessionFactory sessionFactory;
