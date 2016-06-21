@@ -12,5 +12,5 @@ public interface Dao<T> {
 	void delete(int id);
 	T getById(int id);
 	T getByName(String name);
-	List<T> getEntityes();
+	List<T> getEntyties();
 }
