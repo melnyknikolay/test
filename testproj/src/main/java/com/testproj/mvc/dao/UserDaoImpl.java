@@ -14,7 +14,7 @@ import java.util.List;
  * Created by DoctoRJurius on 16.06.16.
  */
 @Repository
-public class UserDaoImpl implements UserDao {
+public class UserDaoImpl implements Dao<User> {
 
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -73,7 +73,7 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public List<User> getUsers() {
+	public List<User> getEntityes() {
 		Session session;
 		try{
 			session = sessionFactory.getCurrentSession();
