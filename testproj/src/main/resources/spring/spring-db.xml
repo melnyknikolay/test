@@ -9,7 +9,7 @@
 
     <tx:annotation-driven/>
 
-    <context:property-placeholder location="classpath:resources/db/mysql.properties" system-properties-mode="OVERRIDE"/>
+    <context:property-placeholder location="classpath:db/mysql.properties" system-properties-mode="OVERRIDE"/>
 
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName" value="${database.driver}"/>
