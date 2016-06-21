@@ -13,7 +13,7 @@ import java.util.List;
  * Created by Николай on 17.06.2016.
  */
 @Repository
-public class RoleDaoImpl implements RoleDao {
+public class RoleDaoImpl implements Dao<Role> {
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -60,8 +60,23 @@ public class RoleDaoImpl implements RoleDao {
         return role;
     }
 
-    @Override
-    public List<Role> getRoles() {
+
+
+  @Override
+    public Role getByName(String name) {
+        Session session;
+        try{
+            session = sessionFactory.getCurrentSession();
+        }catch (HibernateException e){
+            session = sessionFactory.openSession();
+        }
+        Role role = (Role) session.createQuery("from Role r where r.name = :name").setParameter("name", name).list().get(0);
+        return role;
+    }
+
+
+   @Override
+    public List<Role> getEntityes() {
         Session session;
         try{
             session = sessionFactory.getCurrentSession();
