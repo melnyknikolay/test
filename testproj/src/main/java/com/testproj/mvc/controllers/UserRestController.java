@@ -1,6 +1,6 @@
 package com.testproj.mvc.controllers;
 
-import com.testproj.mvc.to.UserTo;
+import com.testproj.mvc.model.User;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,18 +8,18 @@ import java.util.List;
 
 @RestController
 @RequestMapping(UserRestController.REST_URL)
-public class UserRestController extends AbstractUserController {
+public class UserRestController extends UserController {
 	public static final String REST_URL = "/rest/users";
 
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public UserTo get(@PathVariable("id") int id) {
+	public User get(@PathVariable("id") int id) {
 		return super.get(id);
 	}
 
 	@RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public void create(@RequestBody UserTo userTo) {
-		super.create(userTo);
+	public void create(@RequestBody User user) {
+		super.create(user);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
@@ -28,12 +28,13 @@ public class UserRestController extends AbstractUserController {
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public void update(@RequestBody UserTo userTo, @PathVariable("id") int id) {
-		super.update(userTo, id);
+	public void update(@RequestBody User user, @PathVariable("id") int id) {
+		user.setId(id);
+		super.update(user);
 	}
 
 	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<UserTo> getAll() {
+	public List<User> getAll() {
 		return super.getAll();
 	}
 }

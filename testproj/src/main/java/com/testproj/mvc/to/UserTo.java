@@ -47,12 +47,12 @@ public class UserTo {
 		this.password = password;
 	}
 
-	public Boolean getIsActive() {
+	public Boolean getActive() {
 		return isActive;
 	}
 
-	public void setIsActive(Boolean isActive) {
-		this.isActive = isActive;
+	public void setActive(Boolean active) {
+		isActive = active;
 	}
 
 	public String getRole() {

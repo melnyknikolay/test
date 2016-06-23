@@ -1,6 +1,6 @@
 package com.testproj.mvc.controllers;
 
-import com.testproj.mvc.services.AbstractUserService;
+import com.testproj.mvc.services.UserToService;
 import com.testproj.mvc.to.UserTo;
 import com.testproj.mvc.util.UserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,14 +10,14 @@ import java.util.List;
 
 
 @RestController
-public abstract class AbstractUserController {
+public class UserToController {
 
 	@Autowired
-	private AbstractUserService service;
+	private UserToService service;
 
 
 	public UserTo get(int id) {
-		return service.getById(id);
+		return service.getTOById(id);
 	}
 
 	public void create(UserTo userTo) {
@@ -33,7 +33,7 @@ public abstract class AbstractUserController {
 	}
 
 	public List<UserTo> getAll(){
-		return service.getEntyties();
+		return service.getTOEntyties();
 	}
 
 }

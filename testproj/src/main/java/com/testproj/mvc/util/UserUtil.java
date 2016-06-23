@@ -13,19 +13,19 @@ import java.util.List;
 public class UserUtil {
     public static User createFromUserTo(UserTo userTo){
         if (userTo != null) {
-            return new User(null, userTo.getUserName(), userTo.getPassword(), userTo.getIsActive(), new Role(null, userTo.getRole()));
+            return new User(null, userTo.getUserName(), userTo.getPassword(), userTo.getActive(), new Role(null, userTo.getRole()));
         }else return null;
     }
 
     public static User updateFromUserTo(UserTo userTo){
         if (userTo != null) {
-            return new User(userTo.getId(), userTo.getUserName(), userTo.getPassword(), userTo.getIsActive(), new Role(null, userTo.getRole()));
+            return new User(userTo.getId(), userTo.getUserName(), userTo.getPassword(), userTo.getActive(), new Role(null, userTo.getRole()));
         }else return null;
     }
 
     public static UserTo fromUser(User user){
         if (user != null){
-            return new UserTo(user.getId(), user.getUserName(), user.getPassword(), user.getIsActive(), user.getRole().getName());
+            return new UserTo(user.getId(), user.getName(), user.getPassword(), user.getActive(), user.getRole().getName());
         }else return null;
     }
 
