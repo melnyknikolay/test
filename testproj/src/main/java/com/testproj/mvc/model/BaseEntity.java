@@ -23,6 +23,10 @@ public class BaseEntity {
         this.name = name;
     }
 
+    public BaseEntity(String name) {
+        this.name = name;
+    }
+
     public Integer getId() {
         return id;
     }

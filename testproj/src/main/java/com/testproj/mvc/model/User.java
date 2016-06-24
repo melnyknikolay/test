@@ -27,6 +27,13 @@ public class User extends BaseEntity{
 		this.role = role;
 	}
 
+	public User( String userName, String password, Boolean isActive, Role role) {
+		super(userName);
+		this.password = password;
+		this.isActive = isActive;
+		this.role = role;
+	}
+
 	public String getPassword() {
 		return password;
 	}
